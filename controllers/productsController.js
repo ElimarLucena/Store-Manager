@@ -9,13 +9,13 @@ const getAll = async (_req, res) => {
 const getByProductId = async (req, res, _next) => {
   const { id } = req.params;
 
-  const products = await services.getByProductId(id);
+  const product = await services.getByProductId(id);
 
-  if (!products) {
+  if (!product) {
     return res.status(404).json({ message: 'Product not found' });
   }
 
-  return res.status(200).json(products);
+  return res.status(200).json(product);
 };
 
 module.exports = {
