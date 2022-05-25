@@ -13,6 +13,15 @@ const getAll = async () => {
   return response.map(serialize);
 };
 
+const getBySaleId = async (saleId) => {
+  const response = await models.getBySaleId(saleId);
+
+  if (response.length === 0) return null;
+
+  return response.map(serialize);
+};
+
 module.exports = {
   getAll,
+  getBySaleId,
 };
