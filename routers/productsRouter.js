@@ -6,4 +6,6 @@ router.use(express.json());
 
 router.get('/', controllers.getAll);
 
+router.get('/:id', controllers.getByProductId);
+
 module.exports = router;
