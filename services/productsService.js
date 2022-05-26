@@ -45,9 +45,9 @@ const deleteProduct = async (id) => {
   
   if (!allProducts.some((item) => item.id === id)) return null;
 
-  const response = await models.deleteProduct(id);
+  await models.deleteProduct(id);
 
-  return response;
+  return true;
 };
 
 module.exports = {
