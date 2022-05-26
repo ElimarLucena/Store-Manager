@@ -35,9 +35,9 @@ const upDateProduct = async (id, name, quantity) => {
   
   if (!allProducts.some((item) => item.id === id)) return null;
 
-  const response = await models.upDateProduct(id, name, quantity);
+  await models.upDateProduct(id, name, quantity);
 
-  return response;
+  return true;
 };
 
 const deleteProduct = async (id) => {
