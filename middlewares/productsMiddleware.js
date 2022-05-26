@@ -22,7 +22,7 @@ const productQuantityValidation = (quantity, next) => {
     });
   }
 
-  if (quantity.length <= 0) {
+  if (quantity <= 0) {
     next({
       statusCode: 422,
       message: '"quantity" must be greater than or equal to 1',
