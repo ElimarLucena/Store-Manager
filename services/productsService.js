@@ -14,7 +14,24 @@ const getByProductId = async (productId) => {
   return response;
 };
 
+const createNewProduct = async (name, quantity) => {
+  const allProducts = await getAll();
+  
+  if (allProducts.some((item) => item.name === name)) return null;
+  
+  const response = await models.createNewProduct(name, quantity);
+
+  const newProduct = {
+    id: response.insertId,
+    name,
+    quantity,
+  };
+
+  return newProduct;
+};
+
 module.exports = {
   getAll,
   getByProductId,
+  createNewProduct,
 };
