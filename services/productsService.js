@@ -40,9 +40,18 @@ const upDateProduct = async (id, name, quantity) => {
   return response;
 };
 
+const deleteProduct = async (id) => {
+  const allProducts = await getAll();
+  
+  if (!allProducts.some((item) => item.id === id)) return null;
+
+  await models.deleteProduct(id);
+};
+
 module.exports = {
   getAll,
   getByProductId,
   createNewProduct,
   upDateProduct,
+  deleteProduct,
 };
