@@ -30,8 +30,19 @@ const createNewProduct = async (name, quantity) => {
   return newProduct;
 };
 
+const upDateProduct = async (id, name, quantity) => {
+  const allProducts = await getAll();
+  
+  if (!allProducts.some((item) => item.id === id)) return null;
+
+  const response = await models.upDateProduct(id, name, quantity);
+
+  return response;
+};
+
 module.exports = {
   getAll,
   getByProductId,
   createNewProduct,
+  upDateProduct,
 };
