@@ -21,7 +21,27 @@ const getBySaleId = async (saleId) => {
   return response.map(serialize);
 };
 
+const createNewSales = async (sales) => { 
+  const { insertId } = await models.insertTableSales();
+
+  const allSales = sales; 
+
+  const registerNewSales = async ({ productId, quantity }) => {
+    await models.insertTableSalesProducts(insertId, productId, quantity);
+  };
+
+  allSales.map(registerNewSales);
+
+  const newSales = {
+    id: insertId,
+    itemsSold: allSales,
+  };
+
+  return newSales;
+};
+
 module.exports = {
   getAll,
   getBySaleId,
+  createNewSales,
 };

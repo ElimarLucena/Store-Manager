@@ -24,11 +24,11 @@ const saleQuantityValidation = (quantity, next) => {
 };
 
 const saleValidation = (req, _res, next) => {
-  const { productId, quantity } = req.body;
+  const arr = req.body;
 
-  saleProductIdValidation(productId, next);
+  arr.map(({ productId }) => saleProductIdValidation(productId, next));
 
-  saleQuantityValidation(quantity, next);
+  arr.map(({ quantity }) => saleQuantityValidation(quantity, next));
 
   next();
 };

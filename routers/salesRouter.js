@@ -9,8 +9,6 @@ router.get('/', controllers.getAll);
 
 router.get('/:id', controllers.getBySaleId);
 
-router.post('/', saleValidation, (_req, res) => {
-  res.status(200).send('ok');
-});
+router.post('/', saleValidation, controllers.createNewSales);
 
 module.exports = router;
