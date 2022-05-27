@@ -51,9 +51,29 @@ const insertTableSalesProducts = async (id, productId, quantity) => {
   );
 };
 
+const upDateTableSales = async (id) => {
+  await connection.execute(
+    `UPDATE StoreManager.sales
+    SET date = (NOW())
+    WHERE id = ?`,
+    [id],
+  );
+};
+
+const upDateTableSalesProducts = async (id, productId, quantity) => {
+  await connection.execute(
+    `UPDATE StoreManager.sales_products 
+    SET product_id = ?, quantity = ?
+    WHERE sale_id = ?`,
+    [productId, quantity, id],
+  );
+};
+
 module.exports = {
   getAll,
   getBySaleId,
   insertTableSales,
   insertTableSalesProducts,
+  upDateTableSales,
+  upDateTableSalesProducts,
 };

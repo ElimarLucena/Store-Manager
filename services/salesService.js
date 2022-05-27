@@ -40,8 +40,31 @@ const createNewSales = async (sales) => {
   return newSales;
 };
 
+const upDateSale = async (id, productId, quantity) => {
+  const allSales = await getAll();
+  
+  if (!allSales.some((item) => item.saleId === id)) return null;
+
+  await models.upDateTableSales(id);
+
+  await models.upDateTableSalesProducts(id, productId, quantity);
+
+  const updateSales = {
+    saleId: id,
+    itemUpdated: [
+      {
+        productId,
+        quantity,
+      },
+    ],
+  };
+
+  return updateSales;
+};
+
 module.exports = {
   getAll,
   getBySaleId,
   createNewSales,
+  upDateSale,
 };

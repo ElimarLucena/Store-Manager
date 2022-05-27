@@ -11,4 +11,6 @@ router.get('/:id', controllers.getBySaleId);
 
 router.post('/', saleValidation, controllers.createNewSales);
 
+router.put('/:id', saleValidation, controllers.upDateSale);
+
 module.exports = router;
