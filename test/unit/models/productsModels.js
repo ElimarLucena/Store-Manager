@@ -11,58 +11,77 @@ const {
 } = require('../../../models/productsModel');
 
 describe('Teste da camada Model relacionada ao produto.', () => {
-  // describe('Testando função que retorna todos os produtos cadastrados no banco de dados', () => {
-  //   const allProducts = [
-  //     {
-  //       "id": 1,
-  //       "name": "Martelo de Thor",
-  //       "quantity": 10
-  //     },
-  //     {
-  //       "id": 2,
-  //       "name": "Traje de encolhimento",
-  //       "quantity": 20
-  //     },
-  //     {
-  //       "id": 3,
-  //       "name": "Escudo do Capitão América",
-  //       "quantity": 30
-  //     }
-  //   ]
-  //   before(async () => {
-  //     sinon.stub(connection, 'execute').resolves(allProducts);
-  //   });
+  describe('Testando função que retorna todos os produtos cadastrados no banco de dados', () => {
+    describe('Quando a buscar pelos produtos não tem sucesso.', () => {
+      before(async () => {
+        const result = [[]];
 
-  //   after(async () => {
-  //     connection.execute.restore();
-  //   });
+        sinon.stub(connection, 'execute').resolves(result);
+      });
+  
+      after(async () => {
+        connection.execute.restore();
+      });
 
-  //   it('retorna um array com todos os produtos', async () => {
-  //     const response = await getAll(allProducts);
+      it('retorna um array', async () => {
+        const response = await getAll();
+  
+        expect(response).to.be.a('array');
+      });
 
-  //     expect(response).to.be.a('array');
-  //     expect(response).to.have.lengthOf(3);
-  //     expect(response).to.deep.include(allProducts[0]);
-  //   });
-  // });
+      it('retorna um array vazio', async () => {
+        const response = await getAll();
+
+        expect(response).to.have.lengthOf(0);
+      });
+    });
+
+    describe('Quando a buscar pelos produtos tem sucesso.', () => {
+      before(() => {
+        const result = [[
+          { id: 1, name: 'Martelo de Thor', quantity: 10 },
+          { id: 2, name: 'Traje de encolhimento', quantity: 20 },
+          { id: 3, name: 'Escudo do Capitão América', quantity: 30 }
+        ]];
+
+        sinon.stub(connection, 'execute').resolves(result);
+      });
+  
+      after(() => {
+        connection.execute.restore();
+      });
+
+      it('retorna um array', async () => {
+        const response = await getAll();
+  
+        expect(response).to.be.a('array');
+      });
+
+      it('retorna um array com todos os produtos', async () => {
+        const response = await getAll();
+
+        expect(response).to.have.lengthOf(3);
+      });
+    });
+  });
 
   describe('Testando função que cadastra um novo produto no banco de dados.', () => {
-    const insertObject = {
-      name: "Martelo de Thor",
-      quantity: 10
-    };
-
-    before(() => {
-      const execute = [{ insertId: 1 }];
-
-      sinon.stub(connection, 'execute').resolves(execute);
-    });
-
-    after(() => {
-      connection.execute.restore();
-    });
-
     describe('Quando é inserido com sucesso.', () => {
+      const insertObject = {
+        name: "Martelo de Thor",
+        quantity: 10
+      };
+  
+      before(() => {
+        const execute = [{ insertId: 1 }];
+  
+        sinon.stub(connection, 'execute').resolves(execute);
+      });
+  
+      after(() => {
+        connection.execute.restore();
+      });
+
       it ('retornado um objeto', async () => {
         const response = await createNewProduct(insertObject);
 
