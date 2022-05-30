@@ -11,7 +11,37 @@ const {
 } = require('../../../controllers/productsController');
 
 describe('Teste da camada Controllers relacionada ao produto.', () => {
+  
   describe('Testando função que retorna todos os produtos cadastrados no banco de dados', () => {
+    describe('Quando a buscar pelos produtos não tem sucesso', () => {
+      const req = {};
+  
+      const res = {};
+  
+      before(() => {
+        sinon.stub(services, 'getAll').resolves([]);
+  
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+      });
+  
+      after(() => {
+        services.getAll.restore();
+      });
+  
+      it ('status retornado com o código 200', async () => {
+        await getAll(req, res);
+  
+        expect(res.status.calledWith(200)).to.be.equal(true);
+      });
+  
+      it ('retorna um array vazio', async () => {
+        await getAll(req, res);
+  
+        expect(res.json.calledWith(sinon.match.array)).to.be.equal(true);
+      });
+    });
+
     describe('Quando a buscar pelos produtos tem sucesso.', () => {
       const req = {};
 
