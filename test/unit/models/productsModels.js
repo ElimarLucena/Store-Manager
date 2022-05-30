@@ -121,11 +121,36 @@ describe('Teste da camada Model relacionada ao produto.', () => {
   });
 
   describe('Testando função que cadastra um novo produto no banco de dados.', () => {
+    describe('Quando não é inserido com sucesso.', () => {
+        const name = 'Martelo de Thor';
+        const quantity = 10;
+
+      before(() => {
+        const execute = [{}];
+  
+        sinon.stub(connection, 'execute').resolves(execute);
+      });
+
+      after(() => {
+        connection.execute.restore();
+      });
+
+      it ('retornado um objeto', async () => {
+        const response = await createNewProduct(name, quantity);
+
+        expect(response).to.be.a('object');
+      });
+
+      it ('retornado um objeto vazio', async () => {
+        const response = await createNewProduct(name, quantity);
+
+        expect(response).to.be.empty;
+      });
+    });
+
     describe('Quando é inserido com sucesso.', () => {
-      const insertObject = {
-        name: "Martelo de Thor",
-        quantity: 10
-      };
+        const name = "Martelo de Thor";
+        const quantity = 10;
   
       before(() => {
         const execute = [{ insertId: 1 }];
@@ -138,13 +163,13 @@ describe('Teste da camada Model relacionada ao produto.', () => {
       });
 
       it ('retornado um objeto', async () => {
-        const response = await createNewProduct(insertObject);
+        const response = await createNewProduct(name, quantity);
 
         expect(response).to.be.a('object');
       });
 
       it ('objeto contém o "id" do novo produto inserido', async () => {
-        const response = await createNewProduct(insertObject);
+        const response = await createNewProduct(name, quantity);
 
         expect(response).to.have.property('insertId');
       });
