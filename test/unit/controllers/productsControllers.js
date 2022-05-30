@@ -11,7 +11,6 @@ const {
 } = require('../../../controllers/productsController');
 
 describe('Teste da camada Controllers relacionada ao produto.', () => {
-  
   describe('Testando função que retorna todos os produtos cadastrados no banco de dados', () => {
     describe('Quando a buscar pelos produtos não tem sucesso', () => {
       const req = {};
@@ -76,6 +75,76 @@ describe('Teste da camada Controllers relacionada ao produto.', () => {
         expect(res.json()).to.be.a('array');
         expect(res.json()).to.be.lengthOf(3);
         expect(res.json()).to.deep.include({ id: 1, name: 'Martelo de Thor', quantity: 10 });
+      });
+    });
+  });
+
+  describe('Testando função que retorna um produto de acordo com seu número de "id".', () => {
+    describe('Quando o produto não é retornado com sucesso.', () => {
+      const req = {};
+  
+      const res = {};
+
+      before(() => {
+        req.params = 1;
+
+        sinon.stub(services, 'getByProductId').resolves(null);
+  
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns({ message: 'Product not found' });
+      });
+
+      after(() => {
+        services.getByProductId.restore();
+      });
+
+      it ('status retornado com o código 404', async () => {
+        await getByProductId(req, res);
+  
+        expect(res.status.calledWith(404)).to.be.equal(true);
+      });
+
+      it ('retorna um objeto', async () => {
+        await getByProductId(req, res);
+  
+        expect(res.json()).to.be.a('object');
+        expect(res.json()).to.be.property('message');
+        expect(res.json()).to.include({ message: 'Product not found' });
+      });
+    });
+
+    describe('Quando o produto é retornado com sucesso.', () => {
+      const req = {};
+  
+      const res = {};
+
+      before(() => {
+        req.params = 1;
+
+        const result = { id: 1, name: 'Martelo de Thor', quantity: 10 };
+
+        sinon.stub(services, 'getByProductId').resolves(result);
+  
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns(result);
+      });
+
+      after(() => {
+        services.getByProductId.restore();
+      });
+
+      it ('status retornado com o código 200', async () => {
+        await getByProductId(req, res);
+  
+        expect(res.status.calledWith(200)).to.be.equal(true);
+      });
+
+      it ('retorna um objeto', async () => {
+        await getByProductId(req, res);
+
+        expect(res.json()).to.be.a('object');
+        expect(res.json()).to.be.property('id');
+        expect(res.json()).to.include({ id: 1, name: 'Martelo de Thor', quantity: 10 });
       });
     });
   });
@@ -157,5 +226,4 @@ describe('Teste da camada Controllers relacionada ao produto.', () => {
       });
     });
   });
-
 });
