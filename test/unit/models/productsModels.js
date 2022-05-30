@@ -65,6 +65,61 @@ describe('Teste da camada Model relacionada ao produto.', () => {
     });
   });
 
+  describe('Testando função que retorna um produto de acordo com seu número de "id".', () => {
+    describe('Quando o produto não é retornado com sucesso.', () => {
+      const id = 1;
+      
+      before(() => {
+        const execute = [[]];
+
+        sinon.stub(connection, 'execute').resolves(execute);
+      });
+  
+      after(() => {
+        connection.execute.restore();
+      });
+
+      it ('retornado um array', async () => {
+        const response = await getByProductId(id);
+
+        expect(response).to.be.a('array');
+      });
+
+      it ('retornado um array vazio', async () => {
+        const response = await getByProductId(id);
+
+        expect(response).to.be.empty;
+      });
+    });
+
+    describe('Quando o produto é retornado com sucesso.', () => {
+      const id = 1;
+      
+      before(() => {
+        const execute = [[{ id: 1, name: 'Martelo de Thor', quantity: 10 }]];
+
+        sinon.stub(connection, 'execute').resolves(execute);
+      });
+  
+      after(() => {
+        connection.execute.restore();
+      });
+
+      it ('retornado um array', async () => {
+        const response = await getByProductId(id);
+
+        expect(response).to.be.a('array');
+      });
+
+      it ('retornado um array com o produto', async () => {
+        const response = await getByProductId(id);
+
+        expect(response).to.have.lengthOf(1);
+        expect(response).to.deep.include({ id: 1, name: 'Martelo de Thor', quantity: 10 });
+      });
+    });
+  });
+
   describe('Testando função que cadastra um novo produto no banco de dados.', () => {
     describe('Quando é inserido com sucesso.', () => {
       const insertObject = {
