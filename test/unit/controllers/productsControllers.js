@@ -226,4 +226,78 @@ describe('Teste da camada Controllers relacionada ao produto.', () => {
       });
     });
   });
+
+  describe('Testando função que atualizar um produto no banco de dados.', () => {
+    describe('Quando o produto não é atualizado com sucesso', () => {
+      const req = {};
+  
+      const res = {};
+
+      before(() => {
+        req.params = 1;
+
+        req.body = { name: 'Martelo do Thor', quantity: 10 };
+
+        sinon.stub(services, 'upDateProduct').resolves(null);
+  
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns({ message: 'Product not found' });
+      });
+
+      after(() => {
+        services.upDateProduct.restore();
+      });
+
+      it ('status retornado com o código 404', async () => {
+        await upDateProduct(req, res);
+  
+        expect(res.status.calledWith(404)).to.be.equal(true);
+      });
+
+      it ('retorna um objeto', async () => {
+        await upDateProduct(req, res);
+
+        expect(res.json()).to.be.a('object');
+        expect(res.json()).to.be.property('message');
+        expect(res.json()).to.include({ message: 'Product not found' });
+      });
+    });
+
+    describe('Quando o produto é atualizado com sucesso', () => {
+      const req = {};
+  
+      const res = {};
+
+      const objUpdate = { id: 1, name: 'Martelo', quantity: 10 };
+
+      before(() => {
+        req.params = 1;
+
+        req.body = { name: 'Martelo', quantity: 10 };
+
+        sinon.stub(services, 'upDateProduct').resolves(true);
+  
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns(objUpdate);
+      });
+
+      after(() => {
+        services.upDateProduct.restore();
+      });
+
+      it ('status retornado com o código 200', async () => {
+        await upDateProduct(req, res);
+  
+        expect(res.status.calledWith(200)).to.be.equal(true);
+      });
+
+      it ('retorna um objeto', async () => {
+        await upDateProduct(req, res);
+
+        expect(res.json()).to.be.a('object');
+        expect(res.json()).to.be.property('quantity');
+        expect(res.json()).to.include({ id: 1, name: 'Martelo', quantity: 10 });
+      });
+    });
+  });
 });
