@@ -175,4 +175,33 @@ describe('Teste da camada Model relacionada ao produto.', () => {
       });
     });
   });
+
+  describe('Testando função que atulizar um novo produto no banco de dados.', () => {
+    describe('Quando a função de atualizado da camada "Model" é chamada.', () => {
+      const id = 1;
+      const name = 'Martelo de Thor';
+      const quantity = 10;
+
+      before(() => {
+        const result = { id: 1, name: 'Martelo de Thor', quantity: 10 };
+
+        sinon.stub(connection, 'execute').resolves(result);
+      });
+
+      after(() => {
+        connection.execute.restore();
+      });
+
+      it ('quando o id  existe', async () => {
+        try {
+          const response = await upDateProduct(id, name, quantity);
+
+          expect(response).to.be.a('object');
+          expect(response).to.include({ id: 1, name: 'Martelo de Thor', quantity: 10 });
+        } catch (error) {
+          expect.fail();
+        };
+      });
+    });
+  });
 });

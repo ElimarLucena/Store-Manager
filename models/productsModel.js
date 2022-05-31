@@ -36,6 +36,8 @@ const upDateProduct = async (id, name, quantity) => {
     WHERE id = ?`,
     [id, name, quantity, id],
   );
+
+  return { id, name, quantity };
 };
 
 const deleteProduct = async (id) => {
