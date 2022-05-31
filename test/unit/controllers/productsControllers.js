@@ -300,4 +300,64 @@ describe('Teste da camada Controllers relacionada ao produto.', () => {
       });
     });
   });
+
+  describe('Testando função que deleta um produto no banco de dados.', () => {
+    describe('Quando o produto não é deletado com sucesso.', () => {
+      const req = {};
+  
+      const res = {};
+
+      before(() => {
+        req.params = 1;
+
+        sinon.stub(services, 'deleteProduct').resolves(null);
+  
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns({ message: 'Product not found' });
+      });
+
+      after(() => {
+        services.deleteProduct.restore();
+      });
+
+      it ('status retornado com o código 404', async () => {
+        await deleteProduct(req, res);
+  
+        expect(res.status.calledWith(404)).to.be.equal(true);
+      });
+
+      it ('retorna um objeto', async () => {
+        await deleteProduct(req, res);
+
+        expect(res.json()).to.be.a('object');
+        expect(res.json()).to.be.property('message');
+        expect(res.json()).to.include({ message: 'Product not found' });
+      });
+    });
+
+    describe('Quando o produto é deletado com sucesso.', () => {
+      const req = {};
+  
+      const res = {};
+
+      before(() => {
+        req.params = 1;
+
+        sinon.stub(services, 'deleteProduct').resolves(true);
+
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+      });
+
+      after(() => {
+        services.deleteProduct.restore();
+      });
+
+      it ('status retornado com o código 204', async () => {
+        await deleteProduct(req, res);
+  
+        expect(res.status.calledWith(204)).to.be.equal(true);
+      });
+    });
+  });
 });
