@@ -33,7 +33,7 @@ const createNewProduct = async (name, quantity) => {
 const upDateProduct = async (id, name, quantity) => {
   const allProducts = await getAll();
   
-  if (!allProducts.some((item) => item.id === id)) return null;
+  if (allProducts.every((item) => item.id !== id)) return null;
 
   await models.upDateProduct(id, name, quantity);
 

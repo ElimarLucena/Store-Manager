@@ -68,13 +68,13 @@ describe('Teste da camada Services relacionada ao produto.', () => {
     describe('Quando o produto não é retornado com sucesso.', () => {
       const id = 1;
 
-      before(async () => {
+      before(() => {
         const result = [];
 
         sinon.stub(models, 'getByProductId').resolves(result);
       });
   
-      after(async () => {
+      after(() => {
         models.getByProductId.restore();
       });
 
@@ -155,6 +155,57 @@ describe('Teste da camada Services relacionada ao produto.', () => {
   
         expect(response).to.be.property('name');
         expect(response).to.include({ name: 'produto'});
+      });
+    });
+  });
+
+  describe('Testando função que atulaizar um produto no banco de dados.', () => {
+    describe('Quando o produto não é atualizado com sucesso', () => {
+      const id = 2;
+      const name = 'Martelo de Thor';
+      const quantity = 10;
+
+      before(() => {
+        const result = [
+          { id: 1, name: 'Martelo de Thor', quantity: 10 },
+        ];
+
+        sinon.stub(models, 'getAll').resolves(result);
+      });
+
+      after(() => {
+        models.getAll.restore();
+      });
+
+      it ('retorna um "null"', async () => {
+        const response = await upDateProduct(id, name, quantity);
+
+        expect(response).to.be.a('null');
+        expect(response).to.be.equal(null);
+      });
+    });
+
+    describe('Quando o produto é atualizado com sucesso', () => {
+      const id = 1;
+      const name = 'Martelo de Thor';
+      const quantity = 10;
+
+      before(() => {
+        const result = [
+          { id: 1, name: 'Martelo de Thor', quantity: 10 },
+        ];
+
+        sinon.stub(models, 'getAll').resolves(result);
+      });
+
+      after(() => {
+        models.getAll.restore();
+      });
+
+      it ('retorna um "true"', async () => {
+        const response = await upDateProduct(id, name, quantity);
+
+        expect(response).to.be.equal(true);
       });
     });
   });
