@@ -118,9 +118,22 @@ describe('Teste da camada Services relacionada ao produto.', () => {
   describe('Testando função que cadastra um novo produto no banco de dados.', () => {
     describe('Quando o produto já existe.', () => {
       const name = 'Martelo de Thor';
+      const quantity = 10;
+
+      before(() => {
+        const result = [
+          { id: 1, name: 'Martelo de Thor', quantity: 10 },
+        ];
+
+        sinon.stub(models, 'getAll').resolves(result);
+      });
+
+      after(() => {
+        models.getAll.restore();
+      });
   
       it ('retorna um null', async () => {
-        const response = await createNewProduct(name);
+        const response = await createNewProduct(name, quantity);
   
         expect(response).to.be.a('null');
         expect(response).to.be.equal(null);
