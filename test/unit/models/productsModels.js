@@ -204,4 +204,31 @@ describe('Teste da camada Model relacionada ao produto.', () => {
       });
     });
   });
+
+  describe('Testando função que deleta um produto no banco de dados.', () => {
+    describe('Quando a função de deletar da camada "Model" é chamada.', () => {
+      const id = 1;
+
+      before(() => {
+        const result = { id: 1 };
+
+        sinon.stub(connection, 'execute').resolves(result);
+      });
+
+      after(() => {
+        connection.execute.restore();
+      });
+
+      it ('quando o id  existe', async () => {
+        try {
+          const response = await deleteProduct(id);
+
+          expect(response).to.be.a('object');
+          expect(response).to.include({ id: 1});
+        } catch (error) {
+          expect.fail();
+        };
+      });
+    });
+  });
 });

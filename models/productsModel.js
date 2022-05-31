@@ -46,6 +46,8 @@ const deleteProduct = async (id) => {
     WHERE id = ?`,
     [id],
   );
+
+  return { id };
 };
 
 module.exports = {
