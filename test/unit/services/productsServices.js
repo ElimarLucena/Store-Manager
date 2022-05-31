@@ -159,7 +159,7 @@ describe('Teste da camada Services relacionada ao produto.', () => {
     });
   });
 
-  describe('Testando função que atulaizar um produto no banco de dados.', () => {
+  describe('Testando função que atualizar um produto no banco de dados.', () => {
     describe('Quando o produto não é atualizado com sucesso', () => {
       const id = 2;
       const name = 'Martelo de Thor';
@@ -204,6 +204,53 @@ describe('Teste da camada Services relacionada ao produto.', () => {
 
       it ('retorna um "true"', async () => {
         const response = await upDateProduct(id, name, quantity);
+
+        expect(response).to.be.equal(true);
+      });
+    });
+  });
+
+  describe('Testando função que deleta um produto no banco de dados.', () => {
+    describe('Quando o produto não é deletado com sucesso.', () => {
+      const id = 2;
+
+      before(() => {
+        const result = [
+          { id: 1, name: 'Martelo de Thor', quantity: 10 },
+        ];
+
+        sinon.stub(models, 'getAll').resolves(result);
+      });
+
+      after(() => {
+        models.getAll.restore();
+      });
+
+      it ('retorna um "null"', async () => {
+        const response = await deleteProduct(id);
+
+        expect(response).to.be.a('null');
+        expect(response).to.be.equal(null);
+      });
+    });
+
+    describe('Quando o produto é deletado com sucesso.', () => {
+      const id = 1;
+
+      before(() => {
+        const result = [
+          { id: 1, name: 'Martelo de Thor', quantity: 10 },
+        ];
+
+        sinon.stub(models, 'getAll').resolves(result);
+      });
+
+      after(() => {
+        models.getAll.restore();
+      });
+
+      it ('retorna um "true"', async () => {
+        const response = await deleteProduct(id);
 
         expect(response).to.be.equal(true);
       });
