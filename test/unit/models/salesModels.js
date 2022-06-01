@@ -238,7 +238,7 @@ describe('Teste da camada Model relacionada ao Vendas.', () => {
   });
 
   describe('Testando função que atualizar a data que foi feita a venda.', () => {
-    describe('Quando a venda não é atualizada com sucesso.', () => {
+    describe('Quando a data da venda não é atualizada com sucesso.', () => {
       before(() => {
         const execute = [{}];
 
@@ -262,7 +262,7 @@ describe('Teste da camada Model relacionada ao Vendas.', () => {
       });
     });
 
-    describe('Quando a venda é atualizada com sucesso.', () => {
+    describe('Quando a data da venda é atualizada com sucesso.', () => {
       before(() => {
         const execute = [{ insertId: 1 }];
 
@@ -281,6 +281,56 @@ describe('Teste da camada Model relacionada ao Vendas.', () => {
 
       it('retorna um object com o "id" da venda atualizada.', async () => {
         const response = await upDateTableSales();
+
+        expect(response).to.have.property('insertId');
+      });
+    });
+  });
+
+  describe('Testando função que atualizar uma venda no bando de dados.', () => {
+    describe('Quando a venda não é atualizada com sucesso.', () => {
+      before(() => {
+        const execute = [{}];
+
+        sinon.stub(connection, 'execute').resolves(execute);
+      });
+  
+      after(() => {
+        connection.execute.restore();
+      });
+
+      it('retorna um object', async () => {
+        const response = await upDateTableSalesProducts();
+  
+        expect(response).to.be.a('object');
+      });
+
+      it('retorna um object vazio', async () => {
+        const response = await upDateTableSalesProducts();
+
+        expect(response).to.have.empty;
+      });
+    });
+
+    describe('Quando a venda é atualizada com sucesso.', () => {
+      before(() => {
+        const execute = [{ insertId: 1 }];
+
+        sinon.stub(connection, 'execute').resolves(execute);
+      });
+  
+      after(() => {
+        connection.execute.restore();
+      });
+
+      it('retorna um object', async () => {
+        const response = await upDateTableSalesProducts();
+  
+        expect(response).to.be.a('object');
+      });
+
+      it('retorna um object com o "id" da venda atualizada.', async () => {
+        const response = await upDateTableSalesProducts();
 
         expect(response).to.have.property('insertId');
       });

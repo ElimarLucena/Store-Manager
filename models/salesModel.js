@@ -65,12 +65,14 @@ const upDateTableSales = async (id) => {
 };
 
 const upDateTableSalesProducts = async (id, productId, quantity) => {
-  await connection.execute(
+  const [response] = await connection.execute(
     `UPDATE StoreManager.sales_products 
     SET product_id = ?, quantity = ?
     WHERE sale_id = ?`,
     [productId, quantity, id],
   );
+
+  return response;
 };
 
 module.exports = {
