@@ -146,11 +146,17 @@ describe('Teste da camada Services relacionada ao produto.', () => {
   
       before(() => {
         const id = 1;
+
+        const result = [
+          { id: 1, name: 'sapato do Thor', quantity: 10 },
+        ];
   
+        sinon.stub(models, 'getAll').resolves(result);
         sinon.stub(models, 'createNewProduct').resolves({ insertId: id });
       });
   
       after(() => {
+        models.getAll.restore();
         models.createNewProduct.restore();
       });
   
@@ -209,10 +215,12 @@ describe('Teste da camada Services relacionada ao produto.', () => {
         ];
 
         sinon.stub(models, 'getAll').resolves(result);
+        sinon.stub(models, 'upDateProduct').resolves(id, name, quantity);
       });
 
       after(() => {
         models.getAll.restore();
+        models.upDateProduct.restore();
       });
 
       it ('retorna um "true"', async () => {
@@ -256,10 +264,12 @@ describe('Teste da camada Services relacionada ao produto.', () => {
         ];
 
         sinon.stub(models, 'getAll').resolves(result);
+        sinon.stub(models, 'deleteProduct').resolves(id);
       });
 
       after(() => {
         models.getAll.restore();
+        models.deleteProduct();
       });
 
       it ('retorna um "true"', async () => {
