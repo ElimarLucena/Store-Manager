@@ -140,9 +140,9 @@ describe('Teste da camada Model relacionada ao Vendas.', () => {
   describe('Testando função que inseri a data que foi feita a venda.', () => {
     describe('Quabdo a data não é inserida com sucesso.', () => {
       before(() => {
-        const result = [{}];
+        const execute = [{}];
 
-        sinon.stub(connection, 'execute').resolves(result);
+        sinon.stub(connection, 'execute').resolves(execute);
       });
   
       after(() => {
@@ -179,8 +179,58 @@ describe('Teste da camada Model relacionada ao Vendas.', () => {
         expect(response).to.be.a('object');
       });
 
-      it('retorna um object com venda correspondente.', async () => {
+      it('retorna um object com o "id" da venda correspondente.', async () => {
         const response = await insertTableSales();
+
+        expect(response).to.have.property('insertId');
+      });
+    });
+  });
+
+  describe('Testando função inseri uma nova venda no banco de dados.', () => {
+    describe('Quando a venda não é inserida com sucesso.', () => {
+      before(() => {
+        const execute = [{}];
+
+        sinon.stub(connection, 'execute').resolves(execute);
+      });
+  
+      after(() => {
+        connection.execute.restore();
+      });
+
+      it('retorna um object', async () => {
+        const response = await insertTableSalesProducts();
+  
+        expect(response).to.be.a('object');
+      });
+
+      it('retorna um object vazio', async () => {
+        const response = await insertTableSalesProducts();
+
+        expect(response).to.have.empty;
+      });
+    });
+
+    describe('Quando a venda é inserida com sucesso.', () => {
+      before(() => {
+        const execute = [{ insertId: 1 }];
+
+        sinon.stub(connection, 'execute').resolves(execute);
+      });
+  
+      after(() => {
+        connection.execute.restore();
+      });
+
+      it('retorna um object', async () => {
+        const response = await insertTableSalesProducts();
+  
+        expect(response).to.be.a('object');
+      });
+
+      it('retorna um object com o "id" da venda correspondente.', async () => {
+        const response = await insertTableSalesProducts();
 
         expect(response).to.have.property('insertId');
       });
