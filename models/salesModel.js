@@ -54,12 +54,14 @@ const insertTableSalesProducts = async (id, productId, quantity) => {
 };
 
 const upDateTableSales = async (id) => {
-  await connection.execute(
+  const [response] = await connection.execute(
     `UPDATE StoreManager.sales
     SET date = (NOW())
     WHERE id = ?`,
     [id],
   );
+
+  return response;
 };
 
 const upDateTableSalesProducts = async (id, productId, quantity) => {
