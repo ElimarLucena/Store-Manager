@@ -38,9 +38,9 @@ describe('Teste da camada Service relacionada ao Vendas.', () => {
     describe('Quando a buscar pelas vendas tem sucesso.', () => {
       before(() => {
         const result = [{
-            saleI_d: 1,
+            saleId: 1,
             date: "2022-06-01T13:34:09.000Z",
-            product_Id: 1,
+            productId: 1,
             quantity: 5
           }];
 
@@ -61,7 +61,60 @@ describe('Teste da camada Service relacionada ao Vendas.', () => {
         const response = await getAll();
 
         expect(response).to.have.lengthOf(1);
-        expect(response[0]).to.be.property('date');
+      });
+    });
+  });
+
+  describe('estando função que retorna uma venda de acordo com seu número de "id".', () => {
+    describe('Quando a venda não é retornada com sucesso.', () => {
+      const id = 1;
+      
+      before(() => {
+        const execute = [];
+
+        sinon.stub(models, 'getBySaleId').resolves(execute);
+      });
+  
+      after(() => {
+        models.getBySaleId.restore();
+      });
+
+      it ('retornado um "null"', async () => {
+        const response = await getBySaleId(id);
+
+        expect(response).to.be.a('null');
+        expect(response).to.be.null;
+      });
+    });
+
+    describe('Quando a buscar pelas vendas tem sucesso.', () => {
+      const id = 1;
+
+      before(() => {
+        const result = [{
+            saleId: 1,
+            date: "2022-06-01T13:34:09.000Z",
+            productId: 1,
+            quantity: 5
+          }];
+
+        sinon.stub(models, 'getBySaleId').resolves(result);
+      });
+
+      after(() => {
+        models.getBySaleId.restore();
+      });
+
+      it('retorna um array', async () => {
+        const response = await getBySaleId(id);
+
+        expect(response).to.be.a('array');
+      });
+
+      it ('retornado um array com o produto', async () => {
+        const response = await getBySaleId(id);
+
+        expect(response).to.have.lengthOf(1);
       });
     });
   });
