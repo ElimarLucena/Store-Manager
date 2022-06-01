@@ -13,13 +13,13 @@ const {
 describe('Teste da camada Model relacionada ao produto.', () => {
   describe('Testando função que retorna todos os produtos cadastrados no banco de dados', () => {
     describe('Quando a buscar pelos produtos não tem sucesso.', () => {
-      before(async () => {
+      before(() => {
         const result = [[]];
 
         sinon.stub(connection, 'execute').resolves(result);
       });
   
-      after(async () => {
+      after(() => {
         connection.execute.restore();
       });
 
