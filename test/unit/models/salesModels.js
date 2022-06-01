@@ -10,7 +10,6 @@ const {
   upDateTableSales,
   upDateTableSalesProducts,
 } = require('../../../models/salesModel');
-const { execute } = require('../../../dbConnection/connection');
 
 describe('Teste da camada Model relacionada ao Vendas.', () => {
   describe('Testando função que retorna todas as vendas cadastrados no banco de dados', () => {
