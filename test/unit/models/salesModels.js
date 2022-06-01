@@ -10,14 +10,15 @@ const {
   upDateTableSales,
   upDateTableSalesProducts,
 } = require('../../../models/salesModel');
+const { execute } = require('../../../dbConnection/connection');
 
 describe('Teste da camada Model relacionada ao Vendas.', () => {
   describe('Testando função que retorna todas as vendas cadastrados no banco de dados', () => {
     describe('Quando a buscar pelas vendas não tem sucesso.', () => {
       before(() => {
-        const result = [[]];
+        const execute = [[]];
 
-        sinon.stub(connection, 'execute').resolves(result);
+        sinon.stub(connection, 'execute').resolves(execute);
       });
   
       after(() => {
@@ -39,7 +40,7 @@ describe('Teste da camada Model relacionada ao Vendas.', () => {
 
     describe('Quando a buscar pelas vendas tem sucesso.', () => {
       before(() => {
-        const result = [[
+        const execute = [[
           {
             saleId: 1,
             date: "2022-06-01T13:34:09.000Z",
@@ -60,7 +61,7 @@ describe('Teste da camada Model relacionada ao Vendas.', () => {
           }
         ]];
 
-        sinon.stub(connection, 'execute').resolves(result);
+        sinon.stub(connection, 'execute').resolves(execute);
       });
   
       after(() => {
@@ -132,6 +133,56 @@ describe('Teste da camada Model relacionada ao Vendas.', () => {
 
         expect(response).to.have.lengthOf(1);
         expect(response).to.deep.include({ id: 1, name: 'Martelo de Thor', quantity: 10 });
+      });
+    });
+  });
+
+  describe('Testando função que inseri a data que foi feita a venda.', () => {
+    describe('Quabdo a data não é inserida com sucesso.', () => {
+      before(() => {
+        const result = [{}];
+
+        sinon.stub(connection, 'execute').resolves(result);
+      });
+  
+      after(() => {
+        connection.execute.restore();
+      });
+
+      it('retorna um object', async () => {
+        const response = await insertTableSales();
+  
+        expect(response).to.be.a('object');
+      });
+
+      it('retorna um object vazio', async () => {
+        const response = await insertTableSales();
+
+        expect(response).to.have.empty;
+      });
+    });
+
+    describe('Quando a data é inserida com secesso.', () => {
+      before(() => {
+        const execute = [{ insertId: 1 }];
+
+        sinon.stub(connection, 'execute').resolves(execute);
+      });
+  
+      after(() => {
+        connection.execute.restore();
+      });
+
+      it('retorna um object', async () => {
+        const response = await insertTableSales();
+  
+        expect(response).to.be.a('object');
+      });
+
+      it('retorna um object com venda correspondente.', async () => {
+        const response = await insertTableSales();
+
+        expect(response).to.have.property('insertId');
       });
     });
   });
