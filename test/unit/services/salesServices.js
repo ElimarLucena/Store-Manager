@@ -118,4 +118,41 @@ describe('Teste da camada Service relacionada ao Vendas.', () => {
       });
     });
   });
+
+  describe('Testando função inseri uma nova venda no banco de dados.', () => {
+    describe('Quando a venda é inserida com sucesso.', () => {
+      const objSale =  [
+        {
+          "productId": 1,
+          "quantity": 3
+        }
+      ];
+
+      before(() => {
+        const resultId = { insertId: 1 };
+
+        sinon.stub(models, 'insertTableSales').resolves(resultId);
+        sinon.stub(models, 'insertTableSalesProducts').resolves(resultId);
+      });
+
+      after(() => {
+        models.insertTableSales.restore();
+        models.insertTableSalesProducts.restore();
+      });
+
+      
+      it('retorna um object', async () => {
+        const response = await createNewSales(objSale);
+  
+        expect(response).to.be.a('object');
+      });
+
+      it('retorna um object com venda correspondente.', async () => {
+        const response = await createNewSales(objSale);
+
+        expect(response).to.have.property('id');
+        expect(response).to.have.property('itemsSold');
+      });
+    });
+  });
 });
