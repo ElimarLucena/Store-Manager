@@ -139,7 +139,6 @@ describe('Teste da camada Service relacionada ao Vendas.', () => {
         models.insertTableSales.restore();
         models.insertTableSalesProducts.restore();
       });
-
       
       it('retorna um object', async () => {
         const response = await createNewSales(objSale);
@@ -152,6 +151,88 @@ describe('Teste da camada Service relacionada ao Vendas.', () => {
 
         expect(response).to.have.property('id');
         expect(response).to.have.property('itemsSold');
+      });
+    });
+  });
+
+  describe('Testando função que atualizar uma venda no bando de dados.', () => {
+    describe('Quando a venda não é atualizada com sucesso.', () => {
+      const id = 2;
+      const productId = 4;
+      const quantity = 5;
+
+      before(() => {
+        const result = [{
+            saleId: 1,
+            date: "2022-06-01T13:34:09.000Z",
+            productId: 1,
+            quantity: 5
+          }];
+
+        sinon.stub(models, 'getAll').resolves(result);
+      });
+
+      after(() => {
+        models.getAll.restore();
+      });
+
+      it ('retorna um "null"', async () => {
+        const response = await upDateSale(id, productId, quantity);
+
+        expect(response).to.be.a('null');
+        expect(response).to.be.null;
+      });
+    });
+
+    describe('Quando a venda é atualizada com sucesso.', () => {
+      const id = 1;
+      const productId = 4;
+      const quantity = 5;
+
+      before(() => {
+        const result = [
+          {
+            sale_Id: 1,
+            date: "2022-06-01T13:34:09.000Z",
+            product_Id: 1,
+            quantity: 5
+          },
+          {
+            sale_Id: 1,
+            date: "2022-06-01T23:15:16.000Z",
+            product_Id: 2,
+            quantity: 10
+          },
+          {
+            sale_Id: 2,
+            date: "2022-06-01T23:15:16.000Z",
+            product_Id: 3,
+            quantity: 15
+          }
+        ];
+
+        sinon.stub(models, 'getAll').resolves(result);
+        sinon.stub(models, 'upDateTableSales').resolves();
+        sinon.stub(models, 'upDateTableSalesProducts').resolves();
+      });
+
+      after(() => {
+        models.getAll.restore();
+        models.upDateTableSales.restore();
+        models.upDateTableSalesProducts.restore();
+      });
+
+      it('retorna um object', async () => {
+        const response = await upDateSale(id, productId, quantity);
+
+        expect(response).to.be.a('object');
+      });
+
+      it('retorna um object com venda correspondente.', async () => {
+        const response = await upDateSale(id, productId, quantity);
+
+        expect(response).to.have.property('saleId');
+        expect(response).to.have.property('itemUpdated');
       });
     });
   });

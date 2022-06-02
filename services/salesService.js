@@ -42,8 +42,8 @@ const createNewSales = async (sales) => {
 
 const upDateSale = async (id, productId, quantity) => {
   const allSales = await getAll();
-  
-  if (!allSales.some((item) => item.saleId === id)) return null;
+
+  if (allSales.every((item) => item.saleId !== id)) return null;
 
   await models.upDateTableSales(id);
 
