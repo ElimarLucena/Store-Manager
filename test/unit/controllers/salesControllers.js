@@ -13,7 +13,7 @@ describe('Teste da camada Controllers relacionada ao Vendas.', () => {
   describe('Testando função que retorna todas as vendas cadastrados no banco de dados', () => {
     describe('Quando a buscar pelas vendas tem sucesso.', () => {
       const req = {};
-  
+
       const res = {};
 
       before(() => {
@@ -38,7 +38,7 @@ describe('Teste da camada Controllers relacionada ao Vendas.', () => {
           }
         ];
         sinon.stub(services, 'getAll').resolves(result);
-  
+
         res.status = sinon.stub().returns(res);
         res.json = sinon.stub().returns(result);
       });
@@ -49,7 +49,7 @@ describe('Teste da camada Controllers relacionada ao Vendas.', () => {
 
       it ('retorna um array', async () => {
         await getAll(req, res);
-  
+
         expect(res.json()).to.be.a('array');
         expect(res.json()).to.be.lengthOf(3);
         expect(res.json()).to.deep.include( {
@@ -62,7 +62,7 @@ describe('Teste da camada Controllers relacionada ao Vendas.', () => {
     });
   });
 
-  describe('Testando função que retorna todas as vendas cadastrados no banco de dados', () => {
+  describe('Testando função que retorna uma venda de acordo com seu número de "id".', () => {
     describe('Quando a venda não é retornada com sucesso.', () => {
       const req = {};
   
@@ -152,6 +152,44 @@ describe('Teste da camada Controllers relacionada ao Vendas.', () => {
           productId: 3,
           quantity: 15
         });
+      });
+    });
+  });
+
+  describe('Testando função inseri uma nova venda no banco de dados.', () => {
+    describe('Quando a venda é inserida com sucesso.', () => {
+      const req = {};
+
+      const res = {};
+
+      before(() => {
+        req.body = [ { productId: 1, quantity: 3 } ];
+
+        const result =  {
+          id: 1,
+          itemsSold: [
+            {
+              productId: 1,
+              quantity: 3
+            }
+          ]
+        };
+
+        sinon.stub(services, 'createNewSales').resolves(result);
+
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns(result);
+      });
+
+      after(() => {
+        services.createNewSales.restore();
+      });
+
+      it ('retorna um "object"', async () => {
+        await createNewSales(req, res);
+
+        expect(res.json()).to.be.a('object');
+        expect(res.json()).to.be.property('id');
       });
     });
   });

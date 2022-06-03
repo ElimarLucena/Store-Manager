@@ -65,7 +65,7 @@ describe('Teste da camada Service relacionada ao Vendas.', () => {
     });
   });
 
-  describe('estando função que retorna uma venda de acordo com seu número de "id".', () => {
+  describe('Testando função que retorna uma venda de acordo com seu número de "id".', () => {
     describe('Quando a venda não é retornada com sucesso.', () => {
       const id = 1;
       
