@@ -75,6 +75,22 @@ const upDateTableSalesProducts = async (id, productId, quantity) => {
   return response;
 };
 
+const deleteTableSales = async (id) => {
+  await connection.execute(
+    `DELETE FROM StoreManager.sales 
+    WHERE id = ?`,
+    [id],
+  );
+};
+
+const deleteTableSalesProducts = async (id) => {
+  await connection.execute(
+    `DELETE FROM StoreManager.sales_products 
+    WHERE sale_id = ?`,
+    [id],
+  );
+};
+
 module.exports = {
   getAll,
   getBySaleId,
@@ -82,4 +98,6 @@ module.exports = {
   insertTableSalesProducts,
   upDateTableSales,
   upDateTableSalesProducts,
+  deleteTableSales,
+  deleteTableSalesProducts,
 };
