@@ -62,9 +62,21 @@ const upDateSale = async (id, productId, quantity) => {
   return updateSales;
 };
 
+const deleteSale = async (id) => {
+  const allSales = await getAll();
+
+  if (allSales.every((item) => item.sale_Id !== id)) return null;
+
+  await models.deleteTableSales(id);
+  await models.deleteTableSalesProducts(id);
+
+  return true;
+};
+
 module.exports = {
   getAll,
   getBySaleId,
   createNewSales,
   upDateSale,
+  deleteSale,
 };
