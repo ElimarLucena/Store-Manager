@@ -1,9 +1,6 @@
 const models = require('../models/salesModel');
 
-const { 
-  upDateQuantityProduct, 
-  upDateQuantityProductDelete,
-} = require('./productsService');
+const productServices = require('./productsService');
 
 const serialize = (item) => ({
   saleId: item.sale_Id,
@@ -33,7 +30,7 @@ const createNewSales = async (sales) => {
 
   const registerNewSales = async ({ productId, quantity }) => {
     await models.insertTableSalesProducts(insertId, productId, quantity);
-    await upDateQuantityProduct(productId, quantity);
+    await productServices.upDateQuantityProduct(productId, quantity);
   };
 
   allSales.map(registerNewSales);
@@ -55,7 +52,7 @@ const upDateSale = async (id, productId, quantity) => {
 
   await models.upDateTableSalesProducts(id, productId, quantity);
 
-  await upDateQuantityProduct(productId, quantity);
+  await productServices.upDateQuantityProduct(productId, quantity);
 
   const updateSales = {
     saleId: id,
@@ -77,7 +74,7 @@ const deleteSale = async (id) => {
   
   const { productId, quantity } = allSales.find((item) => item.saleId === id);
 
-  await upDateQuantityProductDelete(productId, quantity);
+  await productServices.upDateQuantityProductDelete(productId, quantity);
 
   await models.deleteTableSales(id);
   await models.deleteTableSalesProducts(id);
