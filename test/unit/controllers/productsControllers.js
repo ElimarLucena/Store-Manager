@@ -82,14 +82,14 @@ describe('Teste da camada Controllers relacionada ao produto.', () => {
   describe('Testando função que retorna um produto de acordo com seu número de "id".', () => {
     describe('Quando o produto não é retornado com sucesso.', () => {
       const req = {};
-  
+
       const res = {};
 
       before(() => {
         req.params = 1;
 
         sinon.stub(services, 'getByProductId').resolves(null);
-  
+
         res.status = sinon.stub().returns(res);
         res.json = sinon.stub().returns({ message: 'Product not found' });
       });
@@ -100,13 +100,13 @@ describe('Teste da camada Controllers relacionada ao produto.', () => {
 
       it ('status retornado com o código 404', async () => {
         await getByProductId(req, res);
-  
+
         expect(res.status.calledWith(404)).to.be.equal(true);
       });
 
       it ('retorna um objeto', async () => {
         await getByProductId(req, res);
-  
+
         expect(res.json()).to.be.a('object');
         expect(res.json()).to.be.property('message');
         expect(res.json()).to.include({ message: 'Product not found' });
@@ -115,7 +115,7 @@ describe('Teste da camada Controllers relacionada ao produto.', () => {
 
     describe('Quando o produto é retornado com sucesso.', () => {
       const req = {};
-  
+
       const res = {};
 
       before(() => {
@@ -124,7 +124,7 @@ describe('Teste da camada Controllers relacionada ao produto.', () => {
         const result = { id: 1, name: 'Martelo de Thor', quantity: 10 };
 
         sinon.stub(services, 'getByProductId').resolves(result);
-  
+
         res.status = sinon.stub().returns(res);
         res.json = sinon.stub().returns(result);
       });
@@ -135,7 +135,7 @@ describe('Teste da camada Controllers relacionada ao produto.', () => {
 
       it ('status retornado com o código 200', async () => {
         await getByProductId(req, res);
-  
+
         expect(res.status.calledWith(200)).to.be.equal(true);
       });
 
@@ -183,43 +183,43 @@ describe('Teste da camada Controllers relacionada ao produto.', () => {
         expect(res.json()).to.include({ message: 'Product already exists' });
       });
     });
-  
+
     describe('Quando um produto é inserido com sucesso.', () => {
       const req = {}
-  
+
       const res = {};
-  
+
       const newProduct = {
         id: 1,
         name: 'produto',
         quantity: 10,
       };
-  
+
       before(() => {
         req.body = {
           name: 'produto',
           quantity: 10,
         };
-  
+
         sinon.stub(services, 'createNewProduct').resolves(newProduct)
-  
+
         res.status = sinon.stub().returns(res);
         res.json = sinon.stub().returns(newProduct);
       });
-  
+
       after(() => {
         services.createNewProduct.restore();
       });
-  
+
       it ('status retornado com o código 201', async () => {
         await createNewProduct(req, res);
-  
+
         expect(res.status.calledWith(201)).to.be.equal(true);
       });
-  
+
       it ('retorna um objeto', async () => {
         await createNewProduct(req, res);
-  
+
         expect(res.json()).to.be.a('object');
         expect(res.json()).to.be.property('quantity');
         expect(res.json()).to.include({ name: 'produto'});
