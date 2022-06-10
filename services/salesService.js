@@ -73,11 +73,11 @@ const upDateSale = async (id, productId, quantity) => {
 const deleteSale = async (id) => {
   const allSales = await getAll();
 
+  if (allSales.every((item) => item.saleId !== id)) return null;
+  
   const { productId, quantity } = allSales.find((item) => item.saleId === id);
 
   await upDateQuantityProductDelete(productId, quantity);
-
-  if (allSales.every((item) => item.saleId !== id)) return null;
 
   await models.deleteTableSales(id);
   await models.deleteTableSalesProducts(id);
