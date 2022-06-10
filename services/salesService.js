@@ -1,6 +1,9 @@
 const models = require('../models/salesModel');
 
-const { upDateQuantityProduct } = require('./productsService');
+const { 
+  upDateQuantityProduct, 
+  upDateQuantityProductDelete,
+} = require('./productsService');
 
 const serialize = (item) => ({
   saleId: item.sale_Id,
@@ -69,6 +72,10 @@ const upDateSale = async (id, productId, quantity) => {
 
 const deleteSale = async (id) => {
   const allSales = await getAll();
+
+  const { productId, quantity } = allSales.find((item) => item.saleId === id);
+
+  await upDateQuantityProductDelete(productId, quantity);
 
   if (allSales.every((item) => item.saleId !== id)) return null;
 

@@ -60,6 +60,16 @@ const upDateQuantityProduct = async (productId, quantity) => {
   await models.upDateQuantityProduct(productId, result);
 };
 
+const upDateQuantityProductDelete = async (productId, quantity) => {
+  const allProducts = await getAll();
+
+  const getProduct = allProducts.find((item) => item.id === productId);
+
+  const result = getProduct.quantity + quantity;
+  
+  await models.upDateQuantityProduct(productId, result);
+};
+
 module.exports = {
   getAll,
   getByProductId,
@@ -67,4 +77,5 @@ module.exports = {
   upDateProduct,
   deleteProduct,
   upDateQuantityProduct,
+  upDateQuantityProductDelete,
 };
