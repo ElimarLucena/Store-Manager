@@ -1,5 +1,7 @@
 const models = require('../models/salesModel');
 
+const { upDateQuantityProduct } = require('./productsService');
+
 const serialize = (item) => ({
   saleId: item.sale_Id,
   date: item.date,
@@ -28,6 +30,7 @@ const createNewSales = async (sales) => {
 
   const registerNewSales = async ({ productId, quantity }) => {
     await models.insertTableSalesProducts(insertId, productId, quantity);
+    await upDateQuantityProduct(productId, quantity);
   };
 
   allSales.map(registerNewSales);
@@ -48,6 +51,8 @@ const upDateSale = async (id, productId, quantity) => {
   await models.upDateTableSales(id);
 
   await models.upDateTableSalesProducts(id, productId, quantity);
+
+  await upDateQuantityProduct(productId, quantity);
 
   const updateSales = {
     saleId: id,

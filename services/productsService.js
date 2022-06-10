@@ -50,10 +50,21 @@ const deleteProduct = async (id) => {
   return true;
 };
 
+const upDateQuantityProduct = async (productId, quantity) => {
+  const allProducts = await getAll();
+
+  const getProduct = allProducts.find((item) => item.id === productId);
+
+  const result = getProduct.quantity - quantity;
+  
+  await models.upDateQuantityProduct(productId, result);
+};
+
 module.exports = {
   getAll,
   getByProductId,
   createNewProduct,
   upDateProduct,
   deleteProduct,
+  upDateQuantityProduct,
 };
