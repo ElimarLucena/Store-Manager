@@ -1,3 +1,5 @@
+const getAllProducts = require('../services/productsService'); // função vinda da camada de service das vendas.
+
 const saleProductIdValidation = (productId, next) => {
   if (!productId) {
     next({
@@ -23,12 +25,27 @@ const saleQuantityValidation = (quantity, next) => {
   }
 };
 
-const saleValidation = (req, _res, next) => {
+const saleQuantityValidationLimit = async (productId, quantity, next) => {
+  const allProducts = await getAllProducts.getAll();
+
+  const product = allProducts.find((item) => item.id === productId);
+
+  if (product.quantity < quantity) {
+    next({
+      statusCode: 422,
+      message: 'Such amount is not permitted to sell',
+    });
+  }
+};
+
+const saleValidation = async (req, _res, next) => {
   const arr = req.body;
 
   arr.map(({ productId }) => saleProductIdValidation(productId, next));
 
   arr.map(({ quantity }) => saleQuantityValidation(quantity, next));
+
+  arr.map(({ productId, quantity }) => saleQuantityValidationLimit(productId, quantity, next));
 
   next();
 };
