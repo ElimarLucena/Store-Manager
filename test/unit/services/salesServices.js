@@ -2,6 +2,7 @@ const sinon = require('sinon');
 const { expect } = require('chai');
 
 const models = require('../../../models/salesModel');
+const upDateQuantity = require('../../../services/productsService');
 const { 
   getAll, 
   getBySaleId, 
@@ -214,6 +215,7 @@ describe('Teste da camada Service relacionada ao Vendas.', () => {
         sinon.stub(models, 'getAll').resolves(result);
         sinon.stub(models, 'upDateTableSales').resolves();
         sinon.stub(models, 'upDateTableSalesProducts').resolves();
+        sinon.stub(upDateQuantity, 'upDateQuantityProduct').resolves(productId, quantity);
       });
 
       after(() => {
