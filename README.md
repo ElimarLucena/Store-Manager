@@ -1,24 +1,6 @@
 # Boas-vindas ao repositório do Projeto Store Manager!
 
-Para realizar o projeto, atente-se a cada passo descrito a seguir, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
-
-Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir deste repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
-
-## Termos e acordos
-
-Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta e do Manual da Pessoa Estudante da Trybe.
-
 # Entregáveis
-
-<details>
-  <summary><strong>🤷🏽‍♀️ Como entregar</strong></summary><br />
-
-  Para entregar o seu projeto você deverá criar um *Pull Request* neste repositório.
-
-  Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://app.betrybe.com/course/4d67f5b4-34a6-489f-a205-b6c7dc50fc16/) e nosso [Blog - Git & GitHub](https://blog.betrybe.com/tecnologia/git-e-github/) sempre que precisar!
-
-  <br />
-</details>
 
 <details>
   <summary><strong>👨‍💻 O que deverá ser desenvolvido</strong></summary><br />
@@ -31,16 +13,6 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
   <br />
 </details>
-
-<details>
-  <summary><strong>🗓 Data de Entrega</strong></summary><br />
-
-  - Este projeto é individual
-  - Serão `6` dias de projeto
-  - Data de entrega para avaliação final do projeto: `10/06/2022 14:00`
-
-    <br />
-  </details>
 
 # Orientações
 
@@ -126,101 +98,16 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
   1. Clone o repositório
 
-  - `git clone git@github.com:betrybe/sd-018-b-store-manager.git`;
+  - `git clone git@github.com:ElimarLucena/Store-Manager.git;
 
   - Entre na pasta do repositório que você acabou de clonar:
-    - `cd sd-018-b-store-manager`
+    - `cd Store-manager`
 
   2. Instale as dependências [**Caso existam**]
 
   - `npm install`
 
   #### :warning: ATENÇÃO: Não rode o comando `npm audit fix`! *Ele atualiza várias dependências do projeto, e essa atualização gera conflitos com o avaliador.*
-
-
-  3. Crie uma branch a partir da branch `master`
-
-  - Verifique que você está na branch `master`
-    - Exemplo: `git branch`
-  - Se não estiver, mude para a branch `master`
-    - Exemplo: `git checkout master`
-  - Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
-    - Você deve criar uma branch no seguinte formato: `nome-de-usuario-nome-do-projeto`
-    - Exemplo: `git checkout -b joaozinho-sd-018-b-store-manager`
-
-  4. Adicione as mudanças ao _stage_ do Git e faça um `commit`
-
-  - Verifique que as mudanças ainda não estão no _stage_
-    - Exemplo: `git status` (deve aparecer listada a pasta _joaozinho_ em vermelho)
-  - Adicione o novo arquivo ao _stage_ do Git
-    - Exemplo:
-      - `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
-      - `git status` (deve aparecer listado o arquivo _joaozinho/README.md_ em verde)
-  - Faça o `commit` inicial
-    - Exemplo:
-      - `git commit -m 'iniciando o projeto x'` (fazendo o primeiro commit)
-      - `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
-
-  5. Adicione a sua branch com o novo `commit` ao repositório remoto
-
-  - Usando o exemplo anterior: `git push -u origin joaozinho-sd-018-b-store-manager`
-
-  6. Crie um novo `Pull Request` _(PR)_
-
-  - Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-018-b-store-manager/pulls)
-  - Clique no botão verde _"New pull request"_
-  - Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
-  - Clique no botão verde _"Create pull request"_
-  - Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
-  - **Não se preocupe em preencher mais nada por enquanto!**
-  - Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-018-b-store-manager/pulls) e confira que o seu _Pull Request_ está criado
-
-  <br />
-</details>
-
-<details>
-  <summary><strong>⌨️ Durante o desenvolvimento</strong></summary><br />
-
-  #### :warning: PULL REQUESTS COM ISSUES NO LINTER NÃO SERÃO AVALIADAS, ATENTE-SE PARA RESOLVÊ-LAS ANTES DE FINALIZAR O DESENVOLVIMENTO!
-
-  * Faça `commits` das alterações que você fizer no código regularmente
-
-  * Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto
-
-  * Os comandos que você utilizará com mais frequência são:
-    1. `git status` _(para verificar o que está em vermelho - fora do stage - e o que está em verde - no stage)_
-    2. `git add` _(para adicionar arquivos ao stage do Git)_
-    3. `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_
-    5. `git push -u nome-da-branch` _(para enviar o commit para o repositório remoto na primeira vez que fizer o `push` de uma nova branch)_
-    4. `git push` _(para enviar o commit para o repositório remoto após o passo anterior)_
-
-  <br />
-</details>
-
-<details>
-  <summary><strong>🤝 Depois de terminar o desenvolvimento (opcional)</strong></summary><br />
-
-  Para **"entregar"** seu projeto, siga os passos a seguir:
-
-  * Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas
-    * No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**
-    * No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**
-    * No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-00`
-
-  Se ainda houver alguma dúvida sobre como entregar seu projeto, [aqui tem um video explicativo](https://vimeo.com/362189205).
-
-  :warning: **Lembre-se que garantir que todas as _issues_ comentadas pelo _Lint_ estão resolvidas!**
-
-  <br />
-</details>
-
-<details>
-  <summary><strong>🕵🏿 Revisando um pull request</strong></summary><br />
-
-  À medida que você e as outras pessoas que estudam na Trybe forem entregando os projetos, vocês receberão um alerta via Slack para também fazer a revisão dos Pull Requests de colegas. Fique atento às mensagens do "Pull Reminders" no Slack!
-
-  Use o material que você já viu sobre [Code Review](https://course.betrybe.com/real-life-engineer/code-review/) para te ajudar a revisar os projetos que chegaram para você.
-
   <br />
 </details>
 
@@ -288,24 +175,6 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 </details>
 
 <details>
-  <summary><strong>📄 Arquivo app.js</strong></summary><br />
-
-Há um arquivo `app.js` no repositório, não remova nele o seguinte trecho de código:
-
-```javascript
-app.get('/', (request, response) => {
-  response.send();
-});
-
-module.exports = app;
-```
-
-Isso está configurado para o avaliador funcionar.
-
-  <br />
-</details>
-
-<details>
   <summary><strong>🎲 Conexão com o Banco</strong></summary><br />
 
 :warning: **IMPORTANTE!**
@@ -321,7 +190,7 @@ const connection = mysql.createPool({
 });
 ```
 
-Para os testes rodarem corretamente, na raiz do projeto **renomeie o arquivo `.env.example` para `.env`** com as variáveis de ambiente. Por exemplo, caso o seu usuário SQL seja `nome` e a senha `1234` seu arquivo ficará desta forma:
+Renomeie o arquivo `.env.example` para `.env`** com as variáveis de ambiente. Por exemplo, caso o seu usuário SQL seja `nome` e a senha `1234` seu arquivo ficará desta forma:
 
 ```sh
 MYSQL_HOST=localhost
@@ -330,17 +199,6 @@ MYSQL_PASSWORD=1234
 MYSQL_DATABASE=StoreManager
 PORT=3000
 ```
-
-##### :warning: Atenção
-
-- **Variáveis de ambiente além das especificadas acima não são suportadas, pois não são esperadas pelo avaliador do projeto.**
-
-  - A variável **PORT** do arquivo `.env` deve ser utilizada para a conexão com o servidor. É importante utilizar essa variável para os testes serem executados corretamente tanto na máquina local quanto no avaliador.
-
-Com essas configurações, enquanto estiver na máquina local, o banco será executado normalmente via localhost (possibilitando os testes via `npm test`).
-Como o arquivo `.env` não será enviado para o GitHub (não se preocupe com isso, pois já está configurado no `.gitignore`), o avaliador utilizará as suas próprias variáveis de ambiente.
-
-  <br />
 </details>
 
 <details>
@@ -372,106 +230,22 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 <details>
   <summary><strong>🎛 Linter</strong></summary><br />
 
-  Usaremos o [ESLint](https://eslint.org/) para fazer a análise estática do seu código.
-
-  Este projeto já vem com as dependências relacionadas ao _linter_ configuradas no arquivos `package.json`.
-
-  Para poder rodar os `ESLint` em um projeto basta executar o comando `npm install` dentro do projeto e depois `npm run lint`. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
-
   Você pode também instalar o plugin do `ESLint` no `VSCode`, basta baixar o [plugin `ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) e instalá-lo
 
   <br />
 </details>
 
-<details>
-  <summary><strong>🛠 Testes</strong></summary><br />
+# Requisitos do Projeto
 
-  Usaremos o [Jest](https://jestjs.io/pt-BR/) e o [Frisby](https://docs.frisbyjs.com/) para fazer os testes de API.
+## 1 - Teste 35% das camadas da aplicação
 
-  Na seção [Conexão com o Banco](#conexão-com-o-banco), está especificado como a conexão deve ser feita, para que os testes rodem.
-
-  Este projeto já vem configurado e com suas dependências.
-
-  Para poder executar os testes basta executar comando `npm tests` e o resultado será igual o abaixo:
-
-  ![Testes](./public/testejestfrisby.png)
-
-  :warning: **Atenção:** Após rodar os testes, seu banco de dados local será dropado, lembre-se de importá-lo novamente.
-
-  ## :eyes: De olho na Dica: desativando testes
-
-  Especialmente no início, quando a maioria dos testes está falhando, a saída após executar os testes é bastante poluída. Você pode desabilitar temporariamente um teste utilizando a função `skip` junto à função `it`. Como o nome indica, esta função "pula" um teste:
-
-  ```js
-  it.skip('it includes the text `Movie Cards Library` inside a h1 tag', () => {
-    wrapper = shallow(<Header />);
-
-    expect(wrapper.find('header h1').text()).toBe('Movie Cards Library');
-  });
-  ```
-
-  Na saída da execução dos testes, você verá um <img src="./public/orange-circle.png" width="15px"> indicando que o teste está sendo pulado:
-
-  ![image](./public/skipped-test.png)
-
-  Uma estratégia é pular todos os testes no início e ir implementando um teste de cada vez, removendo dele a função `skip`.
-
-  :warning: **Importante:** Lembre-se de não entregar o projeto com nenhum teste ignorado. Testes ignorados serão tratados como testes falhando.
-
-  <br />
-</details>
-
-<details>
-  <summary><strong>🗣 Nos dê feedbacks sobre o projeto!</strong></summary><br />
-
-Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência preenchendo o formulário.
-**Leva menos de 3 minutos!**
-
-[FORMULÁRIO DE AVALIAÇÃO DE PROJETO](https://be-trybe.typeform.com/to/ZTeR4IbH)
-
-:warning: **O avaliador automático não necessariamente avalia seu projeto na ordem em que os requisitos aparecem no readme. Isso acontece para deixar o processo de avaliação mais rápido. Então, não se assuste se isso acontecer, ok?**
-
-  <br />
-</details>
-
-<details>
-  <summary><strong>🗂 Compartilhe seu portfólio!</strong></summary><br />
-
-  Você sabia que o LinkedIn é a principal rede social profissional e compartilhar o seu aprendizado lá é muito importante para quem deseja construir uma carreira de sucesso? Compartilhe esse projeto no seu LinkedIn, marque o perfil da Trybe (@trybe) e mostre para a sua rede toda a sua evolução.
-
-  <br />
-</details>
-
-# Requisitos Obrigatórios
-
-## 1 - Escreva testes para cobrir 35% das camadas da sua aplicação
-
-- Seus arquivos de teste devem ficar no diretório `test/unit`, **como citado [aqui](#para-escrever-seus-própios-arquivos-de-teste)**;
+- **Como citado [aqui](#para-escrever-seus-própios-arquivos-de-teste)**;
 
 - Seus testes da `model` devem fazer mock do banco de dados obrigatóriamente;
-
-- Opcionalmente você pode parar o serviço do `MYSQL` em sua máquina. Para rodar seus teste utilize `npm run test:mocha`;
-
-<details close>
-  <summary>O que será validado</summary>
-  <br>
-
-  > :point_right: Será validado que a cobertura total das linhas dos arquivos de CADA camada `models`, `services` e `controllers` é maior ou igual a 35%. Ou seja, cada uma das camadas tem de ter, ao menos, 35% de cobertura de testes.
-
-  > :point_right: Será validado que ao menos 24 linhas são cobertas pelos testes.
 
 </details>
 
 ## 2 - Crie endpoints para listar os produtos e as vendas
-
->💬 O setup inicial da sua aplicação **é determinante para que esse e os demais requisitos funcionem corretamente.**
->
-> Portanto, antes de começar o requisito, garanta ter seguido as orientações do `README` nas seguintes seções:
->
->- `Todos os seus endpoints devem estar no padrão REST`;
->- `Cada camada da sua API deve estar em seu respectivo diretório`;
->- `Arquivo index.js`;
->- `Conexão com o Banco`.
 
 ### :information_source: Para **Produtos**
 
@@ -482,46 +256,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 - Através do caminho `/products/:id`, apenas o produto com o `id` presente na URL deve ser retornado;
 
 - o resultado deve ser **ordernado** de forma crescente pelo campo `id`;
-
-<details close>
-  <summary>O que será validado no endpoint para listar produtos</summary>
-  <br>
-
-  > :point_right: Para o endpoint `GET /products`, será validado que todos produtos estão sendo retornados.
-  - sua API deve responder com status http `200` e o seguinte `body`:
-  ```json
-    [
-      {
-        "id": 1,
-        "name": "produto A",
-        "quantity": 10
-      },
-      {
-        "id": 2,
-        "name": "produto B",
-        "quantity": 20
-      }
-    ]
-  ```
-
-  > :point_right: Para o endpoint `GET /products/:id`, será validado que é possível listar um determinado produto.
-  - sua API deve responder com status http `200` e o seguinte `body`:
-    ```json
-      {
-        "id": 1,
-        "name": "produto A",
-        "quantity": 10
-      }
-    ```
-
-  > :point_right: Para o endpoint `GET /products/:id`, será validado que não é possível listar um produto que não existe.
-
-  - sua API deve responder com status http `404` e o seguinte `body`:
-    ```json
-      { "message": "Product not found" }
-    ```
 </details>
-<br>
 
 ### :information_source: Para **Vendas**
 
@@ -533,51 +268,6 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
 - o resultado deve ser **ordernado** de forma crescente pelo campo `saleId`, em caso de empate, **ordernar** também de forma crescente pelo campo `productId`;
 
-<details close>
-  <summary>O que será validado no endpoint para listar vendas</summary>
-  <br>
-
-  > :point_right: Para o endpoint `GET /sales`, será validado que todas vendas estão sendo retornados.
-  - sua API deve responder com status http `200` e o seguinte `body`:
-  ```json
-    [
-      {
-        "saleId": 1,
-        "date": "2021-09-09T04:54:29.000Z",
-        "productId": 1,
-        "quantity": 2
-      },
-      {
-        "saleId": 1,
-        "date": "2021-09-09T04:54:54.000Z",
-        "productId": 2,
-        "quantity": 2
-      }
-    ]
-  ```
-
-  > :point_right: Para o endpoint `GET /sales/:id`, será validado que é possível listar uma determinada venda.
-  - sua API deve responder com status http `200` e o seguinte `body`:
-    ```json
-      [
-        {
-          "date": "2021-09-09T04:54:29.000Z",
-          "productId": 1,
-          "quantity": 2
-        },
-        {
-          "date": "2021-09-09T04:54:54.000Z",
-          "productId": 2,
-          "quantity": 2
-        }
-      ]
-    ```
-
-  > :point_right: Para o endpoint `GET /sales/:id`, será validado que não é possível listar uma venda que não existe.
-  - sua API deve responder com status http `404` e o seguinte `body`:
-    ```json
-      { "message": "Sale not found" }
-    ```
 </details>
 
 ## 3 - Crie middlewares de validação para as rotas `/products` e `/sales`
@@ -588,98 +278,14 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
 - Lembre-se, o banco de dados não deve ser acessado nas validações iniciais do corpo da requisição;
 
-<details close>
-  <summary>O que será validado</summary>
-  <br>
-
-  > :warning: Nenhum dos casos testados com informações inválidas ou com campos faltantes fará acesso ao banco de dados.
-
-  > :point_right: Para o endpoint `POST /products`, o campo `name` deve ser uma _string_ com 5 ou mais caracteres e deve ser único.
-  - Quando a requisição é feita sem o atributo `name` :
-    ```json
-      { "quantity": 100 }
-    ```
-    - sua API deve responder com status http `400` e o seguinte `body`:
-    ```json
-      { "message": "\"name\" is required" }
-    ```
-  - Quando a requisição é feita e contém o seguinte `body`:
-    ```json
-      { "name": "pro", "quantity": 100 }
-    ```
-    - sua API deve responder com status http `422` e o seguinte `body`:
-    ```json
-      { "message": "\"name\" length must be at least 5 characters long" }
-    ```
-
-
-  > :point_right: O campo`quantity` deve ser um número inteiro maior que 0.
-  - Quando a requisição é feita sem o atributo `quantity` :
-    ``` json
-      { "name": "produto" }
-    ```
-    - sua API deve responder com status http `400` e o seguinte `body`:
-    ``` json
-      { "message": "\"quantity\" is required" }
-    ```
-
-  - Quando a requisição é feita com o `quantity`  menor ou igual a 0:
-    ```json
-      { "name": "produto", "quantity": 0 }
-    ```
-     ```json
-      { "name": "produto", "quantity": -1 }
-    ```
-    - sua API deve responder com status http `422` e o seguinte `body`:
-    ```json
-    { "message": "\"quantity\" must be greater than or equal to 1" }
-    ```
 </details>
-<br>
 
 ### :information_source: Para **Vendas**
 
 - O endpoint de produtos deve ser acessível através do caminho (`/sales`);
 
 - Lembre-se, o banco de dados não deve ser acessado nas validações iniciais do corpo da requisição;
-
-<details close>
-  <summary>O que será validado</summary>
-  <br>
-
-  > :warning: Nenhum dos casos testados com informações inválidas ou com campos faltantes fará acesso ao banco de dados.
-
-  > :point_right: será validado que o campo `productId` está presente no body.
-  - Quando a requisição é feita sem o atributo `productId` :
-    ```json
-      [{ "quantity": 2 }]
-    ```
-    - sua API deve responder com status http `400` e o seguinte `body`:
-    ```json
-      { "message": "\"productId\" is required" }
-    ```
-
-  > :point_right: será validado que o campo `quantity` está presente no body.
-  - Quando a requisição é feita sem o atributo `quantity` :
-    ```json
-      [{ "productId": 1 }]
-    ```
-    - sua API deve responder com status http `400` e o seguinte `body`:
-    ```json
-      { "message": "\"quantity\" is required" }
-    ```
-
-  - Quando a requisição é feita com o `quantity`  menor ou igual a 0:
-    ```json
-      [{ "productId": 1, "quantity": 0 }]
-    ```
-     ```json
-      [{ "productId": 1, "quantity": -1 }]
-    ```
-    - sua API deve responder com status http `422` e o seguinte `body`:
-    ```json
-    { "message": "\"quantity\" must be greater than or equal to 1" }
-    ```
+  
 </details>
 
 ## 4 - Crie um endpoint para o cadastro de produtos
@@ -689,30 +295,6 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 - Os produtos enviados devem ser salvos na tabela `products` do Banco de Dados;
 
 - *Observe as regras de negócio e coloque na camada certa;*
-
-<details close>
-  <summary>O que será validado</summary>
-  <br>
-
-  > :point_right: Para o endpoint `POST /products`, o campo `name` deve ser uma _string_ com 5 ou mais caracteres e deve ser único.
-
-  - Quando a requisição é feita com o atributo `name` igual um já cadastrado:
-    ```json
-      { "name": "produto", "quantity": 100 }
-    ```
-    - sua API deve responder com status http `409` e o seguinte `body`:
-    ```json
-      { "message": "Product already exists" }
-    ```
-
-  > :point_right: Para o endpoint `POST /products`, quando a requisição é feita corretamente, o produto deve ser cadastrado.
-  - Quando a requisição é feita e contém o seguinte `body`:
-    ```json
-      { "name": "produto", "quantity": 10 }
-    ```
-    - sua API deve responder com status http `201` e o seguinte `body`:
-    ```json
-      { "id": 1, "name": "produto", "quantity": 10 }
 
 </details>
 
@@ -726,25 +308,6 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
 - *Observe as regras de negócio e coloque na camada certa;*
 
-<details close>
-  <summary>O que será validado</summary>
-  <br>
-
-  > :point_right: Para o endpoint `PUT /products/:id`, quando a requisição é feita corretamente, o produto deve ser alterado.
-  - Quando a requisição é feita e contém o seguinte `body`:
-    ```json
-      { "name": "produto", "quantity": 15 }
-    ```
-    - sua API deve responder com status http `200` e o seguinte `body`:
-    ```json
-      { "id": 1, "name": "produto", "quantity": 15 }
-    ```
-
-  > :point_right: Para o endpoint `PUT /products/:id`, será validado que não é possível alterar um produto que não existe.
-  - sua API deve responder com status http `404` e o seguinte `body`:
-    ```json
-      { "message": "Product not found" }
-    ```
 </details>
 
 ## 6 - Crie um endpoint para deletar um produto
@@ -755,18 +318,6 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
 - *Observe as regras de negócio e coloque na camada certa;*
 
-<details close>
-  <summary>O que será validado</summary>
-  <br>
-
-  > :point_right: Para o endpoint `DELETE /products/:id`, será validado que é possível deletar um produto com sucesso.
-  - sua API deve responder com status http `204` e sem nenhuma resposta no `body`.
-
-  > :point_right: Para o endpoint `DELETE /products/:id`, será validado que não é possível deletar um produto que não existe.
-  - sua API deve responder com status http `404` e o seguinte `body`:
-    ```json
-      { "message": "Product not found" }
-    ```
 </details>
 
 ## 7 - Crie um endpoint para cadastrar vendas
@@ -781,63 +332,6 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
 >💬 Em caso de dúvidas, lembre-se de consultar a seção `Dicas importantes`, neste README
 
-<details close>
-  <summary>O que será validado</summary>
-  <br>
-
-  > :point_right: Para o endpoint `POST /sales`, quando a requisição é feita corretamente, o produto deve ser cadastrado.
-  - Quando a requisição é feita e contém o seguinte `body`:
-    ```json
-      [
-        {
-          "productId": 1,
-          "quantity": 3
-        }
-      ]
-    ```
-    - sua API deve responder com status http `201` e o seguinte `body`:
-    ```json
-      {
-        "id": 1,
-        "itemsSold": [
-          {
-            "productId": 1,
-            "quantity": 3
-          }
-        ]
-      }
-    ```
-
-  > :point_right: Para o endpoint `POST /sales`, quando a requisição é feita corretamente, a venda deve ser cadastrada.
-  - Quando a requisição é feita e contém o seguinte `body`:
-    ```json
-      [
-        {
-          "productId": 1,
-          "quantity": 2
-        },
-        {
-          "productId": 2,
-          "quantity": 5
-        }
-      ]
-    ```
-    - sua API deve responder com status http `201` e o seguinte `body`:
-    ```json
-      {
-        "id": 1,
-        "itemsSold": [
-          {
-            "productId": 1,
-            "quantity": 2
-          },
-          {
-            "productId": 2,
-            "quantity": 5
-          }
-        ]
-      }
-    ```
 </details>
 
 ## 8 - Crie um endpoint para atualizar uma venda
@@ -850,32 +344,6 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
 - *Observe as regras de negócio e coloque na camada certa;*
 
-<details close>
-  <summary>O que será validado</summary>
-  <br>
-
-  > :point_right: Para o endpoint `PUT /sales/:id`, quando a requisição é feita corretamente, a venda deve ser alterada.
-  - Quando a requisição é feita e contém o seguinte `body`:
-    ```json
-      [
-        {
-          "productId": 1,
-          "quantity": 6
-        }
-      ]
-    ```
-    - sua API deve responder com status http `200` e o seguinte `body`:
-    ```json
-      {
-        "saleId": 1,
-        "itemUpdated": [
-          {
-            "productId": 1,
-            "quantity": 6
-          }
-        ]
-      }
-    ```
 </details>
 
 ## 9 - Escreva testes para cobrir 40% das camadas da sua aplicação
@@ -886,36 +354,13 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
 - Opcionalmente você pode parar o serviço do `MYSQL` em sua máquina. Para rodar seus teste utilize `npm run test:mocha`;
 
-<details close>
-  <summary>O que será validado</summary>
-  <br>
-
-  > :point_right: Será validado que a cobertura total das linhas dos arquivos de CADA camada `models`, `services` e `controllers` é maior ou igual a 40%. Ou seja, cada uma das camadas tem de ter, ao menos, 40% de cobertura de testes.
-
-  > :point_right: Será validado que ao menos 24 linhas são cobertas pelos testes.
-
 </details>
-
-# Requisitos Bônus
 
 ## 10 - Crie um endpoint para deletar uma venda
 
 - O endpoint deve ser acessível através do caminho (`/sales/:id`);
 
 - Apenas a venda com o `id` presente na URL deve ser deletado;
-
-<details close>
-  <summary>O que será validado</summary>
-  <br>
-
-  > :point_right: Para o endpoint `DELETE /sales/:id`, será validado que é possível deletar uma venda com sucesso.
-  - sua API deve responder com status http `204` e sem nenhuma resposta no `body`.
-
-  > :point_right: Para o endpoint `DELETE /sales/:id`, será validado que não é possível deletar uma venda que não existe.
-  - sua API deve responder com status http `404` e o seguinte `body`:
-  ```json
-    { "message": "Sale not found" }
-  ```
 
 </details>
 
@@ -926,14 +371,6 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   - **Exemplo 1**: suponha que haja um produto chamado *Bola de Futebol* e a sua propriedade `quantity` tenha o valor *10*. Caso seja feita uma venda com *8* unidades desse produto, a quantidade do produto deve ser atualizada para *2* , pois 10 - 8 = 2;
   - **Exemplo 2**: Suponha que esta venda tenha sido deletada, logo estas *8* unidades devem voltar ao `quantity` e seu valor voltará a *10*, pois 2 + 8 = 10;
 
-<details close>
-  <summary>O que será validado</summary>
-  <br>
-
-  > :point_right: Será validado que ao **fazer uma determinada venda**, a quantidade do produto deverá ser atualizada **também** na tabela responsável pelos produtos.
-
-  > :point_right: Será validado que ao **deletar uma determinada venda**, a quantidade do produto deverá ser atualizada **também** na tabela responsável pelos produtos;.
-
 </details>
 
 ## 12 - Valide a quantidade de produtos
@@ -941,25 +378,6 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 - Um produto nunca deve ter a quantidade em estoque menor que 0;
 
 - Quando uma venda for realizada, garanta que a quantidade sendo vendida está disponível no estoque
-
-<details close>
-  <summary>O que será validado</summary>
-  <br>
-
-  > :point_right: Para o endpoint `POST /sales`, será validado que a quantidade de produtos em estoque nunca seja menor que 0 (zero).
-  - Quando a requisição é feita com uma quantidade superior a quantidade em estoque:
-    ```json
-      [
-        {
-          "productId": 1,
-          "quantity": 100
-        }
-      ]
-    ```
-    - sua API deve responder com status http `422` e o seguinte `body`:
-    ```json
-      { "message": "Such amount is not permitted to sell" }
-    ```
 
 </details>
 
@@ -971,14 +389,6 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
 - Opcionalmente você pode parar o serviço do `MYSQL` em sua máquina. Para rodar seus teste utilize `npm run test:mocha`;
 
-<details close>
-  <summary>O que será validado</summary>
-  <br>
-
-  > :point_right: Será validado que a cobertura total das linhas dos arquivos de CADA camada `models`, `services` e `controllers` é maior ou igual a 50%. Ou seja, cada uma das camadas tem de ter, ao menos, 50% de cobertura de testes.
-
-  > :point_right: Será validado que ao menos 24 linhas são cobertas pelos testes.
-
 </details>
 
 ## 14 - Escreva testes para cobrir 60% das camadas da sua aplicação
@@ -988,13 +398,5 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 - Seus testes da `model` devem fazer mock do banco de dados obrigatóriamente;
 
 - Opcionalmente você pode parar o serviço do `MYSQL` em sua máquina. Para rodar seus teste utilize `npm run test:mocha`;
-
-<details close>
-  <summary>O que será validado</summary>
-  <br>
-
-  > :point_right: Será validado que a cobertura total das linhas dos arquivos de CADA camada `models`, `services` e `controllers` é maior ou igual a 60%. Ou seja, cada uma das camadas tem de ter, ao menos, 60% de cobertura de testes.
-
-  > :point_right: Será validado que ao menos 24 linhas são cobertas pelos testes.
 
 </details>
