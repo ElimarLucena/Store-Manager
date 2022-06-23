@@ -126,55 +126,6 @@
 </details>
 
 <details>
-  <summary><strong>🥞 Cada camada da sua API deve estar em seu respectivo diretório</strong></summary><br />
-
-  Crie os seguintes diretórios **a partir da raiz do projeto** para representar cada uma das camadas da aplicação:
-
-  - A camada **Models** deve estar no diretório de nome `models`;
-
-  - A camada **Services** deve estar no diretório de nome `services`;
-
-  - A camada **Controllers** deve estar no diretório de nome `controllers`;
-
-  - A camada de **Middlewares** deve estar no diretório de nome `middlewares`.
-
-**:warning: Os diretórios já estão criados, não altere os nomes, não os mova de lugar e nem os deixe vazios**
-
-  <br />
-</details>
-
-<details id="para-escrever-seus-própios-arquivos-de-teste">
-  <summary><strong>🧰 Para escrever seus próprios arquivos de teste</strong></summary><br />
-
-- Utilize o **mocha**, **chai** e **sinon** para escrever seus testes;
-
-- E coloque todos os testes de `models`, `services` e `controllers` dentro da pasta `test/unit`.
-
-:warning: **Nota**: É preciso criar a pasta `unit` dentro da pasta `test`.
-
-:eyes: **De olho na dica**: Aqui uma sugestão de arquivos para criar os teste unitários:
-```tree
-.
-├─ ...
-├─ test
-│   └─ unit
-|       ├─ controllers
-│            ├─ productsControllers.js
-│            └─ salesControllers.js
-|       ├─ services
-│            ├─ productsServices.js
-│            └─ salesServices.js
-|       └─ models
-│            ├─ productsModels.js
-│            └─ salesModels.js
-└─ ...
-```
-:warning: **O nome dos arquivos de testes devem seguir essa estrutura `nomeDoArquivo.js`**
-
-  <br />
-</details>
-
-<details>
   <summary><strong>🎲 Conexão com o Banco</strong></summary><br />
 
 :warning: **IMPORTANTE!**
@@ -237,7 +188,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 
 # Requisitos do Projeto
 
-## 1 - Teste 35% das camadas da aplicação
+## Teste 35% das camadas da aplicação
 
 - **Como citado [aqui](#para-escrever-seus-própios-arquivos-de-teste)**;
 
@@ -245,7 +196,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 
 </details>
 
-## 2 - Crie endpoints para listar os produtos e as vendas
+## Crie endpoints para listar os produtos e as vendas
 
 ### :information_source: Para **Produtos**
 
@@ -270,7 +221,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 
 </details>
 
-## 3 - Crie middlewares de validação para as rotas `/products` e `/sales`
+## Crie middlewares de validação para as rotas `/products` e `/sales`
 
 ### :information_source: Para **Produtos**
 
@@ -288,7 +239,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
   
 </details>
 
-## 4 - Crie um endpoint para o cadastro de produtos
+## Crie um endpoint para o cadastro de produtos
 
 - O endpoint deve ser acessível através do caminho (`/products`);
 
@@ -298,7 +249,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 
 </details>
 
-## 5 - Crie um endpoint para atualizar um produto
+## Crie um endpoint para atualizar um produto
 
 - O endpoint deve ser acessível através do caminho (`/products/:id`);
 
@@ -310,7 +261,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 
 </details>
 
-## 6 - Crie um endpoint para deletar um produto
+## Crie um endpoint para deletar um produto
 
 - O endpoint deve ser acessível através do caminho (`/products/:id`);
 
@@ -320,7 +271,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 
 </details>
 
-## 7 - Crie um endpoint para cadastrar vendas
+## Crie um endpoint para cadastrar vendas
 
 - O endpoint deve ser acessível através do caminho (`/sales`);
 
@@ -334,7 +285,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 
 </details>
 
-## 8 - Crie um endpoint para atualizar uma venda
+## Crie um endpoint para atualizar uma venda
 
 - O endpoint deve ser acessível através do caminho (`/sales/:id`);
 
@@ -346,7 +297,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 
 </details>
 
-## 9 - Escreva testes para cobrir 40% das camadas da sua aplicação
+## Escreva testes para cobrir 40% das camadas da sua aplicação
 
 - Seus arquivos de teste devem ficar no diretório `test/unit`, **como citado [aqui](#para-escrever-seus-própios-arquivos-de-teste)**
 
@@ -356,7 +307,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 
 </details>
 
-## 10 - Crie um endpoint para deletar uma venda
+## Crie um endpoint para deletar uma venda
 
 - O endpoint deve ser acessível através do caminho (`/sales/:id`);
 
@@ -364,7 +315,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 
 </details>
 
-## 11 - Atualize a quantidade de produtos
+## Atualize a quantidade de produtos
 
 - Ao realizar uma venda, atualizá-la ou deletá-la, você deve também atualizar a quantidade do produto em questão presente na tabela responsável pelos produtos;
 
@@ -373,7 +324,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 
 </details>
 
-## 12 - Valide a quantidade de produtos
+## Valide a quantidade de produtos
 
 - Um produto nunca deve ter a quantidade em estoque menor que 0;
 
@@ -381,7 +332,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 
 </details>
 
-## 13 - Escreva testes para cobrir 50% das camadas da sua aplicação
+## Escreva testes para cobrir 50% das camadas da sua aplicação
 
 - Seus arquivos de teste devem ficar no diretório `test/unit`, **como citado [aqui](#para-escrever-seus-própios-arquivos-de-teste)**;
 
@@ -391,7 +342,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 
 </details>
 
-## 14 - Escreva testes para cobrir 60% das camadas da sua aplicação
+## Escreva testes para cobrir 60% das camadas da sua aplicação
 
 - Seus arquivos de teste devem ficar no diretório `test/unit`, **como citado [aqui](#para-escrever-seus-própios-arquivos-de-teste)**;
 
